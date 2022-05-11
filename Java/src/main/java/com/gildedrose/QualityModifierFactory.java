@@ -8,6 +8,9 @@ public class QualityModifierFactory {
         if ("Sulfuras, Hand of Ragnaros".equals(item.name)) {
             return new LegendaryItemQualityModifier(item);
         }
+        if ("Backstage passes to a TAFKAL80ETC concert".equals(item.name)) {
+            return new BackStagePassesQualityModifier(item);
+        }
         return new DefaultQualityModifier(item);
     }
 }
