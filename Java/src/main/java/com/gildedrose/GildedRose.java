@@ -11,12 +11,12 @@ class GildedRose {
     }
 
     public void updateQuality() {
-        items = Arrays.stream(items).map(this::updateQualityForItem).toArray(Item[]::new);
+        Arrays.stream(items).forEach(this::updateQualityForItem);
     }
 
-    private Item updateQualityForItem(Item item) {
+    private void updateQualityForItem(Item item) {
         QualityModifier qualityModifier = QualityModifierFactory.create(item);
-        return qualityModifier.adjustQuality();
+        qualityModifier.adjustQuality();
     }
 
 

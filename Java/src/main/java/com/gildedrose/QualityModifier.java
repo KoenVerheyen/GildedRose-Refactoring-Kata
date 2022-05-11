@@ -1,5 +1,5 @@
 package com.gildedrose;
 
 public interface QualityModifier {
-    public Item adjustQuality();
+    public void adjustQuality();
 }
