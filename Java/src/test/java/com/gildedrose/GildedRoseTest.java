@@ -153,6 +153,51 @@ class GildedRoseTest {
         assertEquals(0, items[0].quality);
     }
 
+    @Test
+    void default_DegenerationOfQuality() {
+        Item[] items = createItems("foobar", 20, 50);
+        updateQuality(items);
+
+        assertEquals(19, items[0].sellIn);
+        assertEquals(49, items[0].quality);
+    }
+
+    @Test
+    void defaultDueIn1Day_NormalDegenerationOfQuality() {
+        Item[] items = createItems("foobar", 1, 20);
+        updateQuality(items);
+
+        assertEquals(0, items[0].sellIn);
+        assertEquals(19, items[0].quality);
+    }
+
+    @Test
+    void defaultExpired_FasterDegenerationOfQuality() {
+        Item[] items = createItems("foobar", 0, 20);
+        updateQuality(items);
+
+        assertEquals(-1, items[0].sellIn);
+        assertEquals(18, items[0].quality);
+    }
+
+    @Test
+    void defaultBut0Quality_NoMoreQualityChange() {
+        Item[] items = createItems("foobar", 20, 0);
+        updateQuality(items);
+
+        assertEquals(19, items[0].sellIn);
+        assertEquals(0, items[0].quality);
+    }
+
+    @Test
+    void defaultExpiredAnd1Quality_QualityDropsTo0() {
+        Item[] items = createItems("foobar", -5, 1);
+        updateQuality(items);
+
+        assertEquals(-6, items[0].sellIn);
+        assertEquals(0, items[0].quality);
+    }
+
     private void updateQuality(Item[] items) {
         GildedRose app = new GildedRose(items);
         app.updateQuality();

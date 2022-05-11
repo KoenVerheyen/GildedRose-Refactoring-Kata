@@ -10,26 +10,43 @@ public class DefaultQualityModifier implements QualityModifier {
 
     @Override
     public void adjustQuality() {
-        deductQualityBeforeSellIn(item);
-        reduceSellIn(item);
-        deductQualityAfterSellIn(item);
+        reduceSellIn();
+        if (isBottomQuality()) {
+            return;
+        }
+        reduceQuality();
+        if (isBottomQuality()) {
+            item.quality = 0;
+            return;
+        }
     }
 
-    private void reduceSellIn(Item item) {
+    private void reduceQuality() {
+        if (isItemExpired()) {
+            doubleQualityReduction();
+            return;
+        }
+        qualityReduction();
+    }
+
+    private boolean isBottomQuality() {
+        return item.quality <= 0;
+    }
+
+    private void qualityReduction() {
+        item.quality -= 1;
+    }
+
+    private void doubleQualityReduction() {
+        item.quality -= 2;
+    }
+
+    private boolean isItemExpired() {
+        return item.sellIn < 0;
+    }
+
+    private void reduceSellIn() {
         item.sellIn = item.sellIn - 1;
     }
 
-    private void deductQualityBeforeSellIn(Item item) {
-        if (item.quality > 0) {
-            item.quality = item.quality - 1;
-        }
-    }
-
-    private void deductQualityAfterSellIn(Item item) {
-        if (item.sellIn < 0) {
-            if (item.quality > 0) {
-                item.quality = item.quality - 1;
-            }
-        }
-    }
 }
