@@ -5,6 +5,9 @@ public class QualityModifierFactory {
         if ("Aged Brie".equals(item.name)) {
             return new AgedBrieQualityModifier(item);
         }
+        if ("Sulfuras, Hand of Ragnaros".equals(item.name)) {
+            return new LegendaryItemQualityModifier(item);
+        }
         return new DefaultQualityModifier(item);
     }
 }

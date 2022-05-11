@@ -56,6 +56,16 @@ class GildedRoseTest {
         assertEquals(24, items[0].quality);
     }
 
+    @Test
+    void Sulfuras_neverChanges() {
+        Item[] items = createItems("Sulfuras, Hand of Ragnaros", 20, 80);
+
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(20, items[0].sellIn);
+        assertEquals(80, items[0].quality);
+    }
+
     private Item[] createItems(String itemName, int sellIn, int quality) {
         return new Item[] { new Item(itemName, sellIn, quality)};
     }
