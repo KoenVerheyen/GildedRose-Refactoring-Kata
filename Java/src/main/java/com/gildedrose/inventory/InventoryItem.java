@@ -12,6 +12,10 @@ public class InventoryItem {
         this.item = item;
     }
 
+    public String getName() {
+        return item.name;
+    }
+
     public int getSellIn() {
         return item.sellIn;
     }
@@ -46,5 +50,9 @@ public class InventoryItem {
 
     public void resetQualityToMinimum() {
         item.quality = MIN_QUALITY;
+    }
+
+    public boolean isNull() {
+        return item == null;
     }
 }

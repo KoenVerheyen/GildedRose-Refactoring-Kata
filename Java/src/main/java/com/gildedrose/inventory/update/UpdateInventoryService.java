@@ -1,6 +1,7 @@
 package com.gildedrose.inventory.update;
 
 import com.gildedrose.Item;
+import com.gildedrose.inventory.InventoryItem;
 
 import java.util.Arrays;
 
@@ -12,10 +13,10 @@ public class UpdateInventoryService {
     }
 
     public void updateInventory() {
-        Arrays.stream(items).forEach(this::updateInventory);
+        Arrays.stream(items).map(InventoryItem::new).forEach(this::updateInventory);
     }
 
-    private void updateInventory(Item item) {
+    private void updateInventory(InventoryItem item) {
         UpdateInventoryItem updateInventoryItem = UpdateInventoryItemFactory.create(item);
         updateInventoryItem.adjustSellByTime();
         updateInventoryItem.adjustQuality();

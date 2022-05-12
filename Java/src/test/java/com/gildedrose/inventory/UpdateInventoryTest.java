@@ -5,6 +5,7 @@ import com.gildedrose.inventory.update.UpdateInventoryService;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class UpdateInventoryTest {
     @Test
@@ -231,6 +232,22 @@ public class UpdateInventoryTest {
         updateInventory(items);
         assertEquals(4, items[0].sellIn);
         assertEquals(2, items[0].quality);
+    }
+
+    @Test
+    void itemNull() {
+        Item[] items = new Item[] { null };
+        updateInventory(items);
+    }
+
+    @Test
+    void itemNullAndThenNormalItem_normalItemProcessedNormally() {
+        Item[] items = new Item[] { null, new Item("foobar", 20, 20) };
+        updateInventory(items);
+        assertNull(items[0]);
+        assertEquals("foobar", items[1].name);
+        assertEquals(19, items[1].sellIn);
+        assertEquals(19, items[1].quality);
     }
 
     private void updateInventory(Item[] items) {
