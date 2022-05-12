@@ -145,7 +145,7 @@ public class UpdateInventoryTest {
     }
 
     @Test
-    void default_DegenerationOfQuality() {
+    void normal_DegenerationOfQuality() {
         Item[] items = createInventoryItem("foobar", 20, 50);
         updateInventory(items);
 
@@ -154,7 +154,7 @@ public class UpdateInventoryTest {
     }
 
     @Test
-    void defaultDueIn1Day_NormalDegenerationOfQuality() {
+    void normalDueIn1Day_NormalDegenerationOfQuality() {
         Item[] items = createInventoryItem("foobar", 1, 20);
         updateInventory(items);
 
@@ -163,7 +163,7 @@ public class UpdateInventoryTest {
     }
 
     @Test
-    void defaultExpired_FasterDegenerationOfQuality() {
+    void normalExpired_FasterDegenerationOfQuality() {
         Item[] items = createInventoryItem("foobar", 0, 20);
         updateInventory(items);
 
@@ -172,7 +172,7 @@ public class UpdateInventoryTest {
     }
 
     @Test
-    void defaultBut0Quality_NoMoreQualityChange() {
+    void normalBut0Quality_NoMoreQualityChange() {
         Item[] items = createInventoryItem("foobar", 20, 0);
         updateInventory(items);
 
@@ -181,12 +181,56 @@ public class UpdateInventoryTest {
     }
 
     @Test
-    void defaultExpiredAnd1Quality_QualityDropsTo0() {
+    void normalExpiredAnd1Quality_QualityDropsTo0() {
         Item[] items = createInventoryItem("foobar", -5, 1);
         updateInventory(items);
 
         assertEquals(-6, items[0].sellIn);
         assertEquals(0, items[0].quality);
+    }
+
+    @Test
+    void conjuredItem_sellInDecreaseAsNormal() {
+        Item[] items = createInventoryItem("Conjured Mana cakes", 20, 40);
+        updateInventory(items);
+
+        assertEquals(19, items[0].sellIn);
+    }
+
+    @Test
+    void conjuredItemBeforeSellIn_qualityDecreaseTwiceAsNormal() {
+        Item[] items = createInventoryItem("Conjured Mana cakes", 20, 40);
+        updateInventory(items);
+        assertEquals(38, items[0].quality);
+    }
+
+    @Test
+    void conjuredItemAfterSellIn_qualityDecreaseTwiceAsNormal() {
+        Item[] items = createInventoryItem("Conjured Mana cakes", 0, 40);
+        updateInventory(items);
+        assertEquals(36, items[0].quality);
+    }
+
+    @Test
+    void conjuredItem_qualityDecreaseUntil0() {
+        Item[] items = createInventoryItem("Conjured Mana cakes", 20, 1);
+        updateInventory(items);
+        assertEquals(0, items[0].quality);
+    }
+
+    @Test
+    void conjuredItemExpired_qualityDecreaseUntil0() {
+        Item[] items = createInventoryItem("Conjured Mana cakes", -2, 3);
+        updateInventory(items);
+        assertEquals(0, items[0].quality);
+    }
+
+    @Test
+    void ItemWithNoName_NormalBehaviour() {
+        Item[] items = createInventoryItem(null, 5, 3);
+        updateInventory(items);
+        assertEquals(4, items[0].sellIn);
+        assertEquals(2, items[0].quality);
     }
 
     private void updateInventory(Item[] items) {

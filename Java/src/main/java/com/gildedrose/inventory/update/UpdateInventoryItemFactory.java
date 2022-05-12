@@ -14,6 +14,9 @@ public class UpdateInventoryItemFactory {
         if ("Backstage passes to a TAFKAL80ETC concert".equals(item.name)) {
             return new UpdateInventoryItemBackStagePasses(new InventoryItem(item));
         }
+        if (item.name != null && item.name.startsWith("Conjured")) {
+            return new UpdateInventoryItemConjured(new InventoryItem(item));
+        }
         return new UpdateInventoryItemNormal(new InventoryItem(item));
     }
 }
