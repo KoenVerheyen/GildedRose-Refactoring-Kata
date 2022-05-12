@@ -3,15 +3,17 @@ package com.gildedrose.inventory;
 import com.gildedrose.Item;
 import com.gildedrose.inventory.item.InventoryItem;
 import com.gildedrose.inventory.item.UpdateInventoryItem;
-import com.gildedrose.inventory.item.UpdateInventoryItemFactory;
+import com.gildedrose.inventory.item.UpdateInventoryItemFactoryImpl;
 
 import java.util.Arrays;
 
 public class UpdateInventoryServiceImpl implements UpdateInventoryService {
     private final Item[] items;
+    private final UpdateInventoryItemFactory updateInventoryItemFactory;
 
     UpdateInventoryServiceImpl(Item[] items) {
         this.items = items;
+        this.updateInventoryItemFactory = new UpdateInventoryItemFactoryImpl();
     }
 
     @Override
@@ -20,7 +22,7 @@ public class UpdateInventoryServiceImpl implements UpdateInventoryService {
     }
 
     private void updateInventory(InventoryItem item) {
-        UpdateInventoryItem updateInventoryItem = UpdateInventoryItemFactory.create(item);
+        UpdateInventoryItem updateInventoryItem = updateInventoryItemFactory.create(item);
         updateInventoryItem.adjustSellByTime();
         updateInventoryItem.adjustQuality();
     }

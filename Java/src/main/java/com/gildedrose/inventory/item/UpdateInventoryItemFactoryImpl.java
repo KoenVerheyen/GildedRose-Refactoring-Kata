@@ -1,7 +1,10 @@
 package com.gildedrose.inventory.item;
 
-public class UpdateInventoryItemFactory {
-    public static UpdateInventoryItem create(InventoryItem item) {
+import com.gildedrose.inventory.UpdateInventoryItemFactory;
+
+public class UpdateInventoryItemFactoryImpl implements UpdateInventoryItemFactory {
+    @Override
+    public UpdateInventoryItem create(InventoryItem item) {
         if (item == null || item.isNull()) {
             return new UpdateInventoryItemNull();
         }
