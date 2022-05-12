@@ -1,6 +1,7 @@
 package com.gildedrose;
 
 import com.gildedrose.inventory.update.UpdateInventoryService;
+import com.gildedrose.inventory.update.UpdateInventoryServiceFactory;
 
 class GildedRose {
     Item[] items;
@@ -10,7 +11,7 @@ class GildedRose {
     }
 
     public void updateInventory() {
-        UpdateInventoryService service = new UpdateInventoryService(items);
+        UpdateInventoryService service = UpdateInventoryServiceFactory.create(items);
         service.updateInventory();
     }
 
