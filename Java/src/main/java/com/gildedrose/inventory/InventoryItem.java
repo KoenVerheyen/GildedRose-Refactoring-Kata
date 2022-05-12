@@ -25,7 +25,7 @@ public class InventoryItem {
     }
 
     public boolean isMinQuality() {
-        return item.quality <= 0;
+        return item.quality <= MIN_QUALITY;
     }
 
     public void increaseQualityBy(int amount) {
