@@ -1,7 +1,7 @@
 package com.gildedrose;
 
-import com.gildedrose.inventory.update.UpdateInventoryService;
-import com.gildedrose.inventory.update.UpdateInventoryServiceFactory;
+import com.gildedrose.inventory.UpdateInventoryService;
+import com.gildedrose.inventory.UpdateInventoryServiceFactory;
 
 class GildedRose {
     Item[] items;

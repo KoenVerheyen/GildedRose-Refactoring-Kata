@@ -1,7 +1,4 @@
-package com.gildedrose.inventory.update;
-
-import com.gildedrose.Item;
-import com.gildedrose.inventory.InventoryItem;
+package com.gildedrose.inventory;
 
 public class UpdateInventoryItemFactory {
     public static UpdateInventoryItem create(InventoryItem item) {

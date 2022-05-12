@@ -1,7 +1,6 @@
-package com.gildedrose.inventory.update;
+package com.gildedrose.inventory;
 
 import com.gildedrose.Item;
-import com.gildedrose.inventory.InventoryItem;
 
 import java.util.Arrays;
 

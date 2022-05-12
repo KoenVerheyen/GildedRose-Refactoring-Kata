@@ -1,4 +1,4 @@
-package com.gildedrose.inventory.update;
+package com.gildedrose.inventory;
 
 public interface UpdateInventoryService {
     void updateInventory();

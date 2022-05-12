@@ -1,9 +1,6 @@
 package com.gildedrose.inventory;
 
 import com.gildedrose.Item;
-import com.gildedrose.inventory.update.UpdateInventoryService;
-import com.gildedrose.inventory.update.UpdateInventoryServiceFactory;
-import com.gildedrose.inventory.update.UpdateInventoryServiceImpl;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
