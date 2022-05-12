@@ -1,4 +1,4 @@
-package com.gildedrose.inventory;
+package com.gildedrose.inventory.item;
 
 public class UpdateInventoryItemFactory {
     public static UpdateInventoryItem create(InventoryItem item) {
