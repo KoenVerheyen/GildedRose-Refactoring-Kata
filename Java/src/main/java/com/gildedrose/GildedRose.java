@@ -1,7 +1,6 @@
 package com.gildedrose;
 
-import java.util.Arrays;
-import java.util.stream.Stream;
+import com.gildedrose.inventory.update.UpdateInventoryService;
 
 class GildedRose {
     Item[] items;
@@ -10,14 +9,9 @@ class GildedRose {
         this.items = items;
     }
 
-    public void updateQuality() {
-        Arrays.stream(items).forEach(this::updateQualityForItem);
+    public void updateInventory() {
+        UpdateInventoryService service = new UpdateInventoryService(items);
+        service.updateInventory();
     }
-
-    private void updateQualityForItem(Item item) {
-        QualityModifier qualityModifier = QualityModifierFactory.create(item);
-        qualityModifier.adjustQuality();
-    }
-
 
 }
