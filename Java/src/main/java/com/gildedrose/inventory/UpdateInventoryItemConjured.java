@@ -1,4 +1,4 @@
-package com.gildedrose.inventory.item;
+package com.gildedrose.inventory;
 
 public class UpdateInventoryItemConjured implements UpdateInventoryItem {
     private final UpdateInventoryItemNormal updateInventoryItemNormal;
