@@ -1,5 +1,7 @@
 package com.gildedrose.inventory.item;
 
+import com.gildedrose.inventory.UpdateInventoryItem;
+
 public class UpdateInventoryItemNormal implements UpdateInventoryItem {
     private final InventoryItem item;
 

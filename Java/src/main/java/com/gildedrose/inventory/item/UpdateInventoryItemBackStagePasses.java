@@ -1,9 +1,11 @@
 package com.gildedrose.inventory.item;
 
+import com.gildedrose.inventory.UpdateInventoryItem;
+
 public class UpdateInventoryItemBackStagePasses implements UpdateInventoryItem {
     private final InventoryItem item;
 
-    public UpdateInventoryItemBackStagePasses(InventoryItem item) {
+    UpdateInventoryItemBackStagePasses(InventoryItem item) {
         this.item = item;
     }
 

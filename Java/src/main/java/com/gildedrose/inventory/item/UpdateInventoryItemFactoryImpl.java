@@ -1,5 +1,6 @@
 package com.gildedrose.inventory.item;
 
+import com.gildedrose.inventory.UpdateInventoryItem;
 import com.gildedrose.inventory.UpdateInventoryItemFactory;
 
 public class UpdateInventoryItemFactoryImpl implements UpdateInventoryItemFactory {

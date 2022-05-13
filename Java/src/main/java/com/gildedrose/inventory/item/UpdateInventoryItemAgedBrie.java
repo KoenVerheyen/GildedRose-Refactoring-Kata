@@ -1,9 +1,11 @@
 package com.gildedrose.inventory.item;
 
+import com.gildedrose.inventory.UpdateInventoryItem;
+
 public class UpdateInventoryItemAgedBrie implements UpdateInventoryItem {
     private final InventoryItem item;
 
-    public UpdateInventoryItemAgedBrie(InventoryItem item) {
+    UpdateInventoryItemAgedBrie(InventoryItem item) {
         this.item = item;
     }
 

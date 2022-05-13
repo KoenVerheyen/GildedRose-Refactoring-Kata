@@ -2,8 +2,6 @@ package com.gildedrose.inventory;
 
 import com.gildedrose.Item;
 import com.gildedrose.inventory.item.InventoryItem;
-import com.gildedrose.inventory.item.UpdateInventoryItem;
-import com.gildedrose.inventory.item.UpdateInventoryItemFactoryImpl;
 
 import java.util.Arrays;
 
@@ -11,9 +9,9 @@ public class UpdateInventoryServiceImpl implements UpdateInventoryService {
     private final Item[] items;
     private final UpdateInventoryItemFactory updateInventoryItemFactory;
 
-    UpdateInventoryServiceImpl(Item[] items) {
+    UpdateInventoryServiceImpl(Item[] items, UpdateInventoryItemFactory updateInventoryServiceFactory) {
         this.items = items;
-        this.updateInventoryItemFactory = new UpdateInventoryItemFactoryImpl();
+        this.updateInventoryItemFactory = updateInventoryServiceFactory;
     }
 
     @Override
