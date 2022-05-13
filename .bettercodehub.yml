@@ -1,5 +1,5 @@
 exclude:
 - /js/lib/.*
-component_depth: 8
+component_depth: 7
 languages:
 - java

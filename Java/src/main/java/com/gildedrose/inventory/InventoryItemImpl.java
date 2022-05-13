@@ -1,6 +1,7 @@
 package com.gildedrose.inventory;
 
 import com.gildedrose.Item;
+import com.gildedrose.inventory.item.InventoryItem;
 
 public class InventoryItemImpl implements InventoryItem {
     private static final int MAX_QUALITY = 50;

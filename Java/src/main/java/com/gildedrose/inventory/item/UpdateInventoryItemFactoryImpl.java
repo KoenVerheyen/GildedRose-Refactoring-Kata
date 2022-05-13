@@ -1,4 +1,6 @@
-package com.gildedrose.inventory;
+package com.gildedrose.inventory.item;
+
+import com.gildedrose.inventory.UpdateInventoryItemFactory;
 
 public class UpdateInventoryItemFactoryImpl implements UpdateInventoryItemFactory {
     @Override

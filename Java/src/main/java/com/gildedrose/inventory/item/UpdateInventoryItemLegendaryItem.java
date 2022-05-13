@@ -1,4 +1,4 @@
-package com.gildedrose.inventory;
+package com.gildedrose.inventory.item;
 
 public class UpdateInventoryItemLegendaryItem implements UpdateInventoryItem {
     private final InventoryItem item;
